@@ -4,19 +4,25 @@ on: push
 
 jobs:
   build:
+    name: Build
     runs-on: windows-latest
     
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2.3.2
 
-      - name: Set an output
-        id: set_output
+      - name: Set values
         run: |
-          Write-Host "::set-output name=value1::strawberry"
-          Write-Host "::set-output name=value2::orange"
+          Write-Host "::set-env name=value1::strawberry"
+          Write-Host "::set-env name=value2::orange"
 
-      - name: Read an output
+  release:
+    name: Release
+    runs-on: windows-latest
+    needs: build
+    
+    steps: 
+      - name: Read values
         run: |
-          Write-Host "Value 1 is: ${{steps.set_output.outputs.value1}}"
-          Write-Host "Value 2 is: ${{steps.set_output.outputs.value2}}"
+          Write-Host "Value 1 is: ${{env.value1}}"
+          Write-Host "Value 2 is: ${{env.value2}}"
