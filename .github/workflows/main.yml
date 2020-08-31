@@ -12,7 +12,13 @@ jobs:
 
       - name: Set an output
         id: set_output
-        run: echo "::set-output name=value::strawberry"
+        run: |
+          "Set output variables"
+          echo "::set-output name=value1::strawberry"
+          echo "::set-output name=value2::orange"
 
       - name: Read an output
-        run: Write-Host "${{steps.set_output.outputs.value}}"
+        run: |
+          "Read output variables"
+          Write-Host "Value 1 is: ${{steps.set_output.outputs.value1}}"
+          Write-Host "Value 2 is: ${{steps.set_output.outputs.value2}}"
