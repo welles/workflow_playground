@@ -20,3 +20,7 @@ jobs:
         run: |
           Write-Host "Value 1 is: ${{env.value1}}"
           Write-Host "Value 2 is: ${{env.value2}}"
+      
+      - name: Read files
+        run: |
+          Get-ChildItem -Recurse -Name
