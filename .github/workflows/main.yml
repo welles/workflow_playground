@@ -15,13 +15,7 @@ jobs:
         run: |
           Write-Host "::set-env name=value1::strawberry"
           Write-Host "::set-env name=value2::orange"
-
-  release:
-    name: Release
-    runs-on: windows-latest
-    needs: build
-    
-    steps: 
+      
       - name: Read values
         run: |
           Write-Host "Value 1 is: ${{env.value1}}"
