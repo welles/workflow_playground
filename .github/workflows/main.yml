@@ -10,10 +10,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2.3.2
 
-      - name: Run a one-line script
-        run: Write-Host "TEST"
+      - name: Set an output
+        id: set_output
+        run: echo "::set-output name=value::strawberry"
 
-      - name: Run a multi-line script
-        run: |
-          Write-Host "LINE 1"
-          Write-Host "LINE 2"
+      - name: Read an output
+        run: Write-Host "${{steps.set_output.outputs.value}}"
