@@ -28,3 +28,7 @@ jobs:
       - name: Warn
         run: |
           Write-Host "::warning::This is a warning about stuff."
+
+      - name: Error
+        run: |
+          Write-Host "::error::This is an error message."
