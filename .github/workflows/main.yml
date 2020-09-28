@@ -24,3 +24,7 @@ jobs:
       - name: Read files
         run: |
           Get-ChildItem -Recurse -Name
+
+      - name: Warn
+        run: |
+          Write-Host "::warning::This is a warning about stuff."
